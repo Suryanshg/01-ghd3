@@ -1,10 +1,28 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
-
+<div id="shapes"></div>
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
+  var svg = d3.select("#shapes")
+  .append("svg")
+  .attr("width",400)
+  .attr("height",400)
+
   // Add Rectangles
+  svg.append('rect')
+  .attr('x',100)
+  .attr('y',200)
+  .attr('width',200)
+  .attr('height',200)
+  .attr('fill','blue')
+
   // Add Circles
+  svg.append('circle')
+  .attr('cx',100)
+  .attr('cy',100)
+  .attr('r',50)
+  .attr('fill','green')
+
   // Add Lines
   // Add Polygons
 </script>
