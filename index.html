@@ -5,8 +5,8 @@
   // Add an SVG
   var svg = d3.select("#shapes")
   .append("svg")
-  .attr("width",400)
-  .attr("height",400)
+  .attr("width",800)
+  .attr("height",800)
 
   // Add Rectangles
   svg.append('rect')
@@ -24,5 +24,15 @@
   .attr('fill','green')
 
   // Add Lines
+  svg.append('line')
+  .attr('x1',10)
+  .attr('y1',10)
+  .attr('x2',200)
+  .attr('y2',200)
+  .attr('stroke','black')
+
   // Add Polygons
+  svg.append('polygon')
+  .attr('points',"15,10 40,45 20,100 60,32 90,22")
+  .attr('fill','red')
 </script>
