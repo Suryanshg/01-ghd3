@@ -22,6 +22,11 @@
   .attr('cy',100)
   .attr('r',50)
   .attr('fill','green')
+  .on('mouseover',function(e){
+    d3.select(this).attr('fill','pink')
+  }).on('mouseout',function(e){
+    d3.select(this).attr('fill','green')
+  })
 
   // Add Lines
   svg.append('line')
