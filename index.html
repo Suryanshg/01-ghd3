@@ -2,6 +2,9 @@
 <div id="shapes"></div>
 <script>
   console.log(d3); // test if d3 is loaded
+
+  var data = [100,200,300,400,500,600,700]
+
   // Add an SVG
   var svg = d3.select("#shapes")
   .append("svg")
@@ -17,15 +20,21 @@
   .attr('fill','blue')
 
   // Add Circles
-  svg.append('circle')
-  .attr('cx',100)
-  .attr('cy',100)
+  svg.selectAll('circle')
+  .data(data)
+  .enter().append('circle')
+  .attr('cx',function(d){
+    return d
+  })
+  .attr('cy',function(){
+    return Math.floor(Math.random()*700)+1
+  })
   .attr('r',50)
-  .attr('fill','green')
+  .attr('fill','lightgreen')
   .on('mouseover',function(e){
-    d3.select(this).attr('fill','pink')
+    d3.select(this).attr('fill','darkgreen')
   }).on('mouseout',function(e){
-    d3.select(this).attr('fill','green')
+    d3.select(this).attr('fill','lightgreen')
   })
 
   // Add Lines
