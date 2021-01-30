@@ -9,6 +9,7 @@
                   {"x1":0,"y1":400,"x2":400,"y2":400},
                   {"x1":800,"y1":400,"x2":400,"y2":400},
                   {"x1":400,"y1":800,"x2":400,"y2":400}]
+  var dataPolygon = ["400,0 375,25 425,25","0,400 25,375 25,425","800,400 775,375 775,425","400,800 375,775 425,775"]
 
   // Add an SVG
   var svg = d3.select("#shapes")
@@ -74,7 +75,17 @@
   .attr('stroke','black')
 
   // Add Polygons
-  svg.append('polygon')
-  .attr('points',"15,10 40,45 20,100 60,32 90,22")
+  svg.selectAll('polygon')
+  .data(dataPolygon)
+  .enter()
+  .append('polygon')
+  .attr('points',function(d){
+    return d
+  })
   .attr('fill','red')
+  .on('mouseover',function(e){
+    d3.select(this).attr('fill','brown')
+  }).on('mouseout',function(e){
+    d3.select(this).attr('fill','red')
+  })
 </script>
