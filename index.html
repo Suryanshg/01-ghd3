@@ -4,7 +4,11 @@
   console.log(d3); // test if d3 is loaded
 
   var dataCircle = [100,200,300,400,500,600,700]
-  var dataRect = [150,250,350,450,550,650,750]
+  var dataRect = [50,150,250,350,450,550,650]
+  var dataLine = [{"x1":400,"y1":0,"x2":400,"y2":400},
+                  {"x1":0,"y1":400,"x2":400,"y2":400},
+                  {"x1":800,"y1":400,"x2":400,"y2":400},
+                  {"x1":400,"y1":800,"x2":400,"y2":400}]
 
   // Add an SVG
   var svg = d3.select("#shapes")
@@ -25,7 +29,12 @@
   })
   .attr('width',50)
   .attr('height',25)
-  .attr('fill','blue')
+  .attr('fill','lightblue')
+  .on('mouseover',function(e){
+    d3.select(this).attr('fill','darkblue')
+  }).on('mouseout',function(e){
+    d3.select(this).attr('fill','lightblue')
+  })
 
   // Add Circles
   svg.selectAll('circle')
@@ -37,7 +46,7 @@
   .attr('cy',function(){
     return Math.floor(Math.random()*700)+1
   })
-  .attr('r',50)
+  .attr('r',25)
   .attr('fill','lightgreen')
   .on('mouseover',function(e){
     d3.select(this).attr('fill','darkgreen')
@@ -46,11 +55,22 @@
   })
 
   // Add Lines
-  svg.append('line')
-  .attr('x1',10)
-  .attr('y1',10)
-  .attr('x2',200)
-  .attr('y2',200)
+  svg.selectAll('line')
+  .data(dataLine)
+  .enter()
+  .append('line')
+  .attr('x1',function(d){
+    return d.x1
+  })
+  .attr('y1',function(d){
+    return d.y1
+  })
+  .attr('x2',function(d){
+    return d.x2
+  })
+  .attr('y2',function(d){
+    return d.y2
+  })
   .attr('stroke','black')
 
   // Add Polygons
