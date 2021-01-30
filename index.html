@@ -3,7 +3,8 @@
 <script>
   console.log(d3); // test if d3 is loaded
 
-  var data = [100,200,300,400,500,600,700]
+  var dataCircle = [100,200,300,400,500,600,700]
+  var dataRect = [150,250,350,450,550,650,750]
 
   // Add an SVG
   var svg = d3.select("#shapes")
@@ -12,16 +13,23 @@
   .attr("height",800)
 
   // Add Rectangles
-  svg.append('rect')
-  .attr('x',100)
-  .attr('y',200)
-  .attr('width',200)
-  .attr('height',200)
+  svg.selectAll('rect')
+  .data(dataRect)
+  .enter()
+  .append('rect')
+  .attr('x',function(d){
+    return d
+  })
+  .attr('y',function(){
+    return Math.floor(Math.random()*700)+1
+  })
+  .attr('width',50)
+  .attr('height',25)
   .attr('fill','blue')
 
   // Add Circles
   svg.selectAll('circle')
-  .data(data)
+  .data(dataCircle)
   .enter().append('circle')
   .attr('cx',function(d){
     return d
