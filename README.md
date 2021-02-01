@@ -7,6 +7,8 @@ This project implements primitive shapes using d3.js in different colors. The sh
 4. Polygons: Each polygon(triangle) is used to denote the arrows of the axes of the scatterplot
 
 Here are the screenshots: 
+!1.png
+!2.png
 
 Here is the working link for the website: https://suryanshg.github.io/01-ghd3/
 
